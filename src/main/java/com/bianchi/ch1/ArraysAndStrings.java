@@ -1,75 +1,79 @@
 package com.bianchi.ch1;
 
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Map.Entry;
-
-import javax.swing.text.html.HTMLDocument.HTMLReader.FormAction;
+import java.util.stream.Collectors;
 
 /**
- * The following code are my attempts at the answer of Cracking the Code Interview's questions.
+ * The following code are my attempts at the answer of Cracking the Code
+ * Interview's questions.
  * 
- * All Questions have associated tests, and yes tests are written before the question is answered.
+ * All Questions have associated tests, and yes tests are written before the
+ * question is answered.
  */
 
- public class ArraysAndStrings {
+public class ArraysAndStrings {
 
     /**
-     * Question 1:
-     * Implement an algorithm to determine if a string has all unique characters. What if you cannot use additional data structures?
+     * Question 1: Implement an algorithm to determine if a string has all unique
+     * characters. What if you cannot use additional data structures?
      */
 
     /**
-     * Check to see if a string has all unique characters -- no duplicate characters.
-     * O(n)
+     * Check to see if a string has all unique characters -- no duplicate
+     * characters. O(n)
      * 
      * @param stringToCheck the string to check for duplicate characters in.
      */
-    public static boolean isUnique(String stringToCheck) {        
+    public static boolean isUnique(String stringToCheck) {
         if (stringToCheck == null || stringToCheck == "") {
             return false;
         }
 
         // Use a hashmap -- they reduce our runtime from O(N^2) to O(N)
-        HashMap<Character, Boolean> characterPresenceHashmap = new HashMap<Character, Boolean>();
+        HashSet<Character> characterSet = new HashSet<>();
 
         for (char character : stringToCheck.toCharArray()) {
-            if (characterPresenceHashmap.containsKey(character)) {
+            Character lowerCase = Character.toLowerCase(character);
+            if (characterSet.contains(lowerCase)) {
                 return false;
             }
 
-            characterPresenceHashmap.put(character, true);
+            characterSet.add(lowerCase);
         }
 
         return true;
     }
 
     /**
-     * Checks to see if a string is unique without using a hashmap. This function is slower,
-     * O(n^2)
+     * Checks to see if a string is unique without using a hashmap. This function is
+     * harder, to understand, but is more efficient
      * 
      * @param stringToCheck the string we are checking for duplicates in.
      */
-    public static boolean isUniqueNoHashMap(String stringToCheck) {        
+    public static boolean isUniqueNoHashMap(String stringToCheck) {
         if (stringToCheck == null || stringToCheck == "") {
             return false;
         }
 
-        for (int i = 0; i < stringToCheck.length(); i++) {
-            for (int j = 0; j < stringToCheck.length(); j++) {
-                /**
-                 * Dont cause a false positive if we are looking at the same index.
-                 */
-                if (i == j) {
-                    continue;
-                }
+        int buildingBitChecker = 0;
 
-                if (stringToCheck.toCharArray()[i] == stringToCheck.toCharArray()[j]) {
-                    return false;
-                }
+        for (int i = 0; i < stringToCheck.length(); i++) {
+            int currentChar = stringToCheck.charAt(i);
+
+            int asBits = 1 << (currentChar - 'a');
+
+            if ((asBits & buildingBitChecker) > 0) {
+                return false;
             }
+
+            buildingBitChecker = buildingBitChecker | asBits;
         }
 
         return true;
+
     }
 
     /**
@@ -81,10 +85,12 @@ import javax.swing.text.html.HTMLDocument.HTMLReader.FormAction;
     /**
      * Checks to see if a string is a permutation of another string
      * 
-     * @param original The Base string
-     * @param potentialPermutation The string that may be a permutation of the original string
+     * @param original             The Base string
+     * @param potentialPermutation The string that may be a permutation of the
+     *                             original string
      * 
-     * @returns boolean whether or not the potentialPermutation is a permutation of the original string
+     * @returns boolean whether or not the potentialPermutation is a permutation of
+     *          the original string
      */
     public static boolean isPermutation(String original, String potentialPermutation) {
         /**
@@ -95,41 +101,33 @@ import javax.swing.text.html.HTMLDocument.HTMLReader.FormAction;
         }
 
         /**
-         * Load all characters from the original string into a hashmap.
-         * Then check each character from potentialPermutation is in that hashmap
+         * Sort the arrays and check em.
          */
-        HashMap<Character, Boolean> characterPresenceHashMap = new HashMap<Character,Boolean>();
+        List<Character> sortedOriginalString = original.chars().mapToObj(c -> (char) c).collect(Collectors.toList());
+        List<Character> sortedPotentialPermutation = potentialPermutation.chars().mapToObj(c -> (char) c)
+                .collect(Collectors.toList());
 
-        for (char character : original.toCharArray()) {
-            characterPresenceHashMap.put(character, true);
-        }
-        
-        for (char characterThatMayBeInOriginal : original.toCharArray()) {
-            if (!characterPresenceHashMap.containsKey(characterThatMayBeInOriginal)) {
-                return false;
-            }
-        }
-
-        return true;        
+        return sortedOriginalString.equals(sortedPotentialPermutation);
     }
 
     /**
      * Question 3:
      * 
-     * Write a method toWrite a method to replace all the spaces in a string with ‘%20’.
-     * You may assume that the string has sufficient space at the end to hold the additional characters, 
-     * and that you are given the “true” length of the string.
+     * Write a method toWrite a method to replace all the spaces in a string with
+     * ‘%20’. You may assume that the string has sufficient space at the end to hold
+     * the additional characters, and that you are given the “true” length of the
+     * string.
      */
 
-     /**
-      * 
-      * @param stringToBecomeURL the string we are converting to a url
-      * @param trueLengthOfString an integer that is the true length of the 
-      *
-      * @return String a string that is the url representation of the URL.
-      */
+    /**
+     * 
+     * @param stringToBecomeURL  the string we are converting to a url
+     * @param trueLengthOfString an integer that is the true length of the
+     *
+     * @return String a string that is the url representation of the URL.
+     */
     public static String convertToURL(String stringToBecomeURL, Integer trueLengthOfString) {
-        
+
         if (stringToBecomeURL == null || trueLengthOfString == null) {
             return null;
         }
@@ -148,23 +146,24 @@ import javax.swing.text.html.HTMLDocument.HTMLReader.FormAction;
     }
 
     /**
-     * Question 1.4
-     * Given a string, check to see if it is a permutation of a palindrome.
+     * Question 1.4 Given a string, check to see if it is a permutation of a
+     * palindrome.
      */
 
     /**
      * Checks to see if a string is a permutation of a palindrome.
      * 
-     * Under the covers, this looks to see if the occurances of each character is divisible
-     * by two, and only allows one character to have one occurance. This singular character can be the
-     * midpoint.
+     * Under the covers, this looks to see if the occurances of each character is
+     * divisible by two, and only allows one character to have one occurance. This
+     * singular character can be the midpoint.
      * 
-     * @param permutation The string we are checking to see is a permutation of a Palindrome
+     * @param permutation The string we are checking to see is a permutation of a
+     *                    Palindrome
      * 
      * @return Boolean whether or not this string is a permutation of a palindrome.
      */
     public static Boolean isPalindromePermutation(String permutation) {
-        if (permutation  == null) {
+        if (permutation == null) {
             return false;
         }
 
@@ -182,7 +181,7 @@ import javax.swing.text.html.HTMLDocument.HTMLReader.FormAction;
                 characterOccuranceMap.put(character, 1);
             }
         }
-        
+
         if (permutation.length() % 2 == 0) {
             Boolean midpointFound = false;
             for (Entry<Character, Integer> characterOccuranceCountEntry : characterOccuranceMap.entrySet()) {
@@ -207,7 +206,7 @@ import javax.swing.text.html.HTMLDocument.HTMLReader.FormAction;
             return true;
         }
 
-        if (Math.abs(inputOne.length() - inputTwo.length() > 1)) {
+        if (Math.abs(inputOne.length() - inputTwo.length()) > 1) {
             return false;
         }
 
@@ -216,14 +215,164 @@ import javax.swing.text.html.HTMLDocument.HTMLReader.FormAction;
         // 2. inputOne is too long -- try deleting
         // 3. inputOne is the same size -- try changing
 
-        if (inputOne.length() < inputTwo.length()) {
+        String shorter = inputOne.length() > inputTwo.length() ? inputTwo : inputOne;
+        String longer = inputOne.length() > inputTwo.length() ? inputOne : inputTwo;
 
+        int shorterIndex = 0;
+        int longerIndex = 0;
+        boolean bDifference = false;
+
+        while (longerIndex < longer.length() && shorterIndex < shorter.length()) {
+
+            // if we have found a difference:
+            if (shorter.charAt(shorterIndex) != longer.charAt(longerIndex)) {
+
+                if (bDifference == true)
+                    return false;
+                bDifference = true;
+
+                if (shorter.length() == longer.length()) {
+                    shorterIndex++;
+                }
+            } else {
+                shorterIndex++;
+            }
+            longerIndex++;
         }
+
+        return true;
     }
 
-    private static Boolean attemptInsertion(String inputOne, String inputTwo) {
-        for (int i = 0; i < inputOne.length(); i++) {
-            if (inputOne.charAt(i) != inputTwo.charAt(i))   
+    /**
+     * Compress a string to the number of occurance of a given character to the
+     * streak number ex:
+     * 
+     * aaa = a3
+     * 
+     * if the compressed string is longer than the uncompressed string, then return
+     * the uncompressed string.
+     * 
+     * @param compressable the string to compress
+     * @return
+     */
+    public static String compressString(String compressable) {
+        if (compressable == null) {
+            return null;
         }
+
+        if (compressable.length() == 0) {
+            return "";
+        }
+
+        Character currentChar = compressable.charAt(0);
+        int currentStreak = 1;
+
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 1; i < compressable.length(); i++) {
+            if (compressable.charAt(i) == currentChar) {
+                currentStreak++;
+            } else {
+                sb.append(currentChar);
+                sb.append(currentStreak);
+                currentStreak = 1;
+                currentChar = compressable.charAt(i);
+            }
+        }
+
+        sb.append(currentChar);
+        sb.append(currentStreak);
+        String compressed = sb.toString();
+        return compressable.length() > compressed.length() ? compressed : compressable;
     }
- }
+
+    public static int[][] rotateMatrix(int[][] originalMatrix) {
+
+        int[][] newMatrix = originalMatrix.clone();
+
+        for (int row = 0; row < originalMatrix.length; row++) {
+            int rowOffset = originalMatrix.length - 1 - row;
+            for (int col = 0; col < originalMatrix.length; col++) {
+                int columnOffset = originalMatrix.length - 1 - col;
+
+                newMatrix[columnOffset][rowOffset] = originalMatrix[row][row];
+
+            }
+
+        }
+
+        return newMatrix;
+    }
+
+    /**
+     * 
+     */
+    public static int[][] zeroOutMatrixRowAndColumn(int[][] originalMatrix) {
+
+        int[][] newMatrix =  new int[originalMatrix.length][originalMatrix.length];
+ 
+        for (int row = 0; row < originalMatrix.length; row++) {
+            for (int col = 0; col < originalMatrix.length; col++) {
+                newMatrix[row][col] = originalMatrix[row][col];
+            }
+        }
+        
+
+        for (int row = 0; row < originalMatrix.length; row++) {
+            for (int col = 0; col < originalMatrix.length; col++) {
+                if (originalMatrix[row][col] == 0) {
+                    zeroOutRow(newMatrix, row);
+                    zeroOutColumn(newMatrix, row);
+                }
+            }
+
+        }
+
+        return newMatrix;
+    }
+
+    /**
+     * Zero out a row
+     */
+    private static int[][] zeroOutRow(int[][] matrix, int rowToBeZeroed) {
+        for (int col = 0; col < matrix.length; col++) {
+            matrix[rowToBeZeroed][col] = 0;
+        }
+        return matrix;
+    }
+
+    /**
+     * Zero out a column
+     */
+    private static int[][] zeroOutColumn(int[][] matrix, int columnToBeZeroed) {
+        for (int row = 0; row < matrix.length; row++) {
+            matrix[row][columnToBeZeroed] = 0;
+        }
+        return matrix;
+    }
+
+    /**
+     * Question 1.9
+     */
+    public static boolean isSubstring(String original, String substring) {
+
+        if (original.length() != substring.length()) {
+            return false;
+        }
+
+        StringBuilder prePartitionStringBuilder = new StringBuilder();
+    
+        for (int i = 0; i < original.length(); i++) {
+            if (original.charAt(i) != substring.charAt(0)) {
+                prePartitionStringBuilder.append(original.charAt(i));
+            } else{
+                
+                String built = original.substring(i, original.length()) + prePartitionStringBuilder.toString();
+
+                return built.equals(substring);
+            }
+        }
+
+        return false;
+    }
+}

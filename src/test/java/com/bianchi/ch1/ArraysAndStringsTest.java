@@ -4,6 +4,8 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
+import org.junit.Ignore;
+
 import static com.bianchi.ch1.ArraysAndStrings.*;
 
 public class ArraysAndStringsTest {
@@ -160,23 +162,55 @@ public class ArraysAndStringsTest {
 
     @Test
     public void testIsOneEditAwayInputsAreSame() {
-        assertTrue(isOneEditAway("same", "same"));
+        assertTrue(isOneEditAway("pale", "ple"));
     }
 
     @Test
     public void testIsOneEditAwayInputsOneNeedsInsertion() {
-        assertTrue(isOneEditAway("sme", "same"));
+        assertTrue(isOneEditAway("pales", "pale"));
     }
 
     @Test
     public void testIsOneEditAwayInputsOneNeedsDeletion() {
-        assertTrue(isOneEditAway("same", "same"));
+        assertTrue(isOneEditAway("pale", "bale"));
     }
-
 
     @Test
-    public void testIsOneEditAwayInputsOneNeedsReplacement() {    
-        assertTrue(isOneEditAway("same", "same"));
+    public void testNeedsMoreThanOneEdit() {    
+        assertFalse(isOneEditAway("pale", "bake"));
     }
+
+    @Test
+    public void testCompressionNullCase() {
+        assertNull(compressString(null));
+    }
+
+    @Test
+    public void testCompressionTripleACase() {
+        assertEquals(compressString("aaa"), "a3");
+    }
+
+    @Test
+    public void testCompressionTripleACaseThenDoubleB() {
+        assertEquals(compressString("aaabb"), "a3b2");
+    }
+
+    @Test
+    public void testZeroMatrix() {
+
+        int[][] oldMatrix = new int[][] {{0,2,3},{4,5,6},{7,8,9}};
+        int[][] newMatrix = new int[][] {{0,0,0},{0,5,6},{0,8,9}};
+
+        assertEquals(zeroOutMatrixRowAndColumn(oldMatrix), newMatrix);
+    
+    }
+
+    @Test
+    public void testSubstring() {
+
+        assertTrue(isSubstring("waterbottle","erbottlewat"));
+    
+    }
+
 
 }
