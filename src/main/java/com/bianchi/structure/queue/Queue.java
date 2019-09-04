@@ -4,13 +4,13 @@ public abstract class Queue<T extends Comparable<T>> extends LinkedDataStructure
     /**
      * Place an element within the stack.
      */
-    abstract void push(Node n);
+    abstract public void push(T n);
 
     /**
      * Read but do not consume the top node.
      * @return the top node's payload
      */
-    Comparable peek() {
+    public T peek() {
         return this.head.getPayload();
     }
 
@@ -18,11 +18,12 @@ public abstract class Queue<T extends Comparable<T>> extends LinkedDataStructure
      * Read and consume the top node.
      * @return the top node's payload
      */
-    Comparable pop() {
+    public T pop() {
+        size--;
         Node n = this.head;
         this.head = this.head.next;
 
-        return n.getPayload();
+        return (T) n.getPayload();
     }
 
 

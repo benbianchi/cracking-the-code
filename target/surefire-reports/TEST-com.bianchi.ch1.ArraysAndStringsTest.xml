@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="14" failures="0" name="com.bianchi.ch1.ArraysAndStringsTest" time="0.004" errors="0" skipped="0">
+<testsuite tests="34" failures="0" name="com.bianchi.ch1.ArraysAndStringsTest" time="0.02" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
-    <property name="java.vm.version" value="10.0.1+10"/>
-    <property name="sun.boot.library.path" value="/usr/lib/jvm/java-10-openjdk/lib"/>
-    <property name="maven.multiModuleProjectDirectory" value="/home/ben/Development/Ctci/java-examples"/>
+    <property name="sun.boot.library.path" value="/usr/lib/jvm/java-8-openjdk/jre/lib/amd64"/>
+    <property name="java.vm.version" value="25.212-b01"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="maven.multiModuleProjectDirectory" value="/home/ben/Development/cracking-the-code"/>
     <property name="java.vendor.url" value="http://java.oracle.com/"/>
-    <property name="guice.disable.misplaced.annotation.check" value="true"/>
     <property name="path.separator" value=":"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
     <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
     <property name="file.encoding.pkg" value="sun.io"/>
-    <property name="sun.os.patch.level" value="unknown"/>
     <property name="user.country" value="US"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.os.patch.level" value="unknown"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="user.dir" value="/home/ben/Development/Ctci/java-examples"/>
-    <property name="java.vm.compressedOopsMode" value="32-bit"/>
-    <property name="java.runtime.version" value="10.0.1+10"/>
+    <property name="user.dir" value="/home/ben/Development/cracking-the-code"/>
+    <property name="java.runtime.version" value="1.8.0_212-b01"/>
     <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"/>
+    <property name="java.endorsed.dirs" value="/usr/lib/jvm/java-8-openjdk/jre/lib/endorsed"/>
     <property name="os.arch" value="amd64"/>
     <property name="java.io.tmpdir" value="/tmp"/>
     <property name="line.separator" value="
@@ -27,52 +27,73 @@
     <property name="os.name" value="Linux"/>
     <property name="classworlds.conf" value="/opt/maven/bin/m2.conf"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
-    <property name="java.library.path" value="/usr/java/packages/lib:/usr/lib64:/lib64:/lib:/usr/lib"/>
+    <property name="java.library.path" value="/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib"/>
     <property name="maven.conf" value="/opt/maven/conf"/>
-    <property name="jdk.debug" value="release"/>
-    <property name="java.class.version" value="54.0"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.class.version" value="52.0"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
-    <property name="os.version" value="4.16.10-1-ARCH"/>
+    <property name="os.version" value="4.19.48-1-lts"/>
     <property name="library.jansi.path" value="/opt/maven/lib/jansi-native"/>
     <property name="user.home" value="/home/ben"/>
     <property name="user.timezone" value="America/New_York"/>
     <property name="java.awt.printerjob" value="sun.print.PSPrinterJob"/>
+    <property name="java.specification.version" value="1.8"/>
     <property name="file.encoding" value="UTF-8"/>
-    <property name="java.specification.version" value="10"/>
     <property name="user.name" value="ben"/>
-    <property name="java.class.path" value="/opt/maven/boot/plexus-classworlds-2.5.2.jar"/>
-    <property name="java.vm.specification.version" value="10"/>
+    <property name="java.class.path" value="/opt/maven/boot/plexus-classworlds-2.6.0.jar"/>
+    <property name="java.vm.specification.version" value="1.8"/>
     <property name="sun.arch.data.model" value="64"/>
+    <property name="java.home" value="/usr/lib/jvm/java-8-openjdk/jre"/>
     <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher test"/>
-    <property name="java.home" value="/usr/lib/jvm/java-10-openjdk"/>
-    <property name="user.language" value="en"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.language" value="en"/>
     <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
     <property name="java.vm.info" value="mixed mode"/>
-    <property name="java.version" value="10.0.1"/>
+    <property name="java.version" value="1.8.0_212"/>
+    <property name="java.ext.dirs" value="/usr/lib/jvm/java-8-openjdk/jre/lib/ext:/usr/java/packages/lib/ext"/>
     <property name="securerandom.source" value="file:/dev/./urandom"/>
+    <property name="sun.boot.class.path" value="/usr/lib/jvm/java-8-openjdk/jre/lib/resources.jar:/usr/lib/jvm/java-8-openjdk/jre/lib/rt.jar:/usr/lib/jvm/java-8-openjdk/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-8-openjdk/jre/lib/jsse.jar:/usr/lib/jvm/java-8-openjdk/jre/lib/jce.jar:/usr/lib/jvm/java-8-openjdk/jre/lib/charsets.jar:/usr/lib/jvm/java-8-openjdk/jre/lib/jfr.jar:/usr/lib/jvm/java-8-openjdk/jre/classes"/>
     <property name="java.vendor" value="Oracle Corporation"/>
     <property name="maven.home" value="/opt/maven"/>
     <property name="file.separator" value="/"/>
-    <property name="java.version.date" value="2018-04-17"/>
-    <property name="java.vendor.url.bug" value="http://bugreport.java.com/bugreport/"/>
-    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
     <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="sun.desktop" value="gnome"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="com.bianchi.ch1.ArraysAndStringsTest" name="testNullShouldShortCircuitToFalse" time="0"/>
-  <testcase classname="com.bianchi.ch1.ArraysAndStringsTest" name="testEmptyShouldShortCircuitToFalse" time="0"/>
-  <testcase classname="com.bianchi.ch1.ArraysAndStringsTest" name="testWithoutHashMapStringWithDuplicatesIsNotUnique" time="0"/>
-  <testcase classname="com.bianchi.ch1.ArraysAndStringsTest" name="testWithoutHashMapStringWithoutDuplicatesIsUnique" time="0"/>
-  <testcase classname="com.bianchi.ch1.ArraysAndStringsTest" name="testVoidOriginalReturnsFalse" time="0.003"/>
-  <testcase classname="com.bianchi.ch1.ArraysAndStringsTest" name="testVoidPotentialReturnsFalse" time="0.001"/>
-  <testcase classname="com.bianchi.ch1.ArraysAndStringsTest" name="testEmptyOriginalReturnsFalse" time="0"/>
-  <testcase classname="com.bianchi.ch1.ArraysAndStringsTest" name="testEmptyPotentialReturnsFalse" time="0"/>
-  <testcase classname="com.bianchi.ch1.ArraysAndStringsTest" name="testFailureCaseReturnsFalse" time="0"/>
-  <testcase classname="com.bianchi.ch1.ArraysAndStringsTest" name="testSuccessCaseReturnsTrue" time="0"/>
-  <testcase classname="com.bianchi.ch1.ArraysAndStringsTest" name="testStringWithDuplicatesIsNotUnique" time="0"/>
-  <testcase classname="com.bianchi.ch1.ArraysAndStringsTest" name="testWithoutHashMapNullShouldShortCircuitToFalse" time="0"/>
-  <testcase classname="com.bianchi.ch1.ArraysAndStringsTest" name="testStringWithoutDuplicatesIsUnique" time="0"/>
+  <testcase classname="com.bianchi.ch1.ArraysAndStringsTest" name="testEmptyOriginalReturnsFalse" time="0.004"/>
   <testcase classname="com.bianchi.ch1.ArraysAndStringsTest" name="testWithoutHashMapEmptyShouldShortCircuitToFalse" time="0"/>
+  <testcase classname="com.bianchi.ch1.ArraysAndStringsTest" name="testStringWithoutDuplicatesIsUnique" time="0"/>
+  <testcase classname="com.bianchi.ch1.ArraysAndStringsTest" name="testIsPalindromeNormalWithMidpointJumbled" time="0.001"/>
+  <testcase classname="com.bianchi.ch1.ArraysAndStringsTest" name="testWithoutHashMapStringWithDuplicatesIsNotUnique" time="0.001"/>
+  <testcase classname="com.bianchi.ch1.ArraysAndStringsTest" name="testIsPalindromeEmptyYieldsEmpty" time="0"/>
+  <testcase classname="com.bianchi.ch1.ArraysAndStringsTest" name="testWithoutHashMapStringWithoutDuplicatesIsUnique" time="0.001"/>
+  <testcase classname="com.bianchi.ch1.ArraysAndStringsTest" name="testSuccessCaseReturnsTrue" time="0"/>
+  <testcase classname="com.bianchi.ch1.ArraysAndStringsTest" name="testWithoutHashMapNullShouldShortCircuitToFalse" time="0.001"/>
+  <testcase classname="com.bianchi.ch1.ArraysAndStringsTest" name="testFailureCaseReturnsFalse" time="0"/>
+  <testcase classname="com.bianchi.ch1.ArraysAndStringsTest" name="testIsPalindromeIgnoreCase" time="0.005"/>
+  <testcase classname="com.bianchi.ch1.ArraysAndStringsTest" name="testNeedsMoreThanOneEdit" time="0"/>
+  <testcase classname="com.bianchi.ch1.ArraysAndStringsTest" name="testEmptyShouldShortCircuitToFalse" time="0"/>
+  <testcase classname="com.bianchi.ch1.ArraysAndStringsTest" name="testIsOneEditAwayInputsAreSame" time="0.002"/>
+  <testcase classname="com.bianchi.ch1.ArraysAndStringsTest" name="testNullShouldShortCircuitToFalse" time="0"/>
+  <testcase classname="com.bianchi.ch1.ArraysAndStringsTest" name="testConvertToURLNullCountReturnsNull" time="0"/>
+  <testcase classname="com.bianchi.ch1.ArraysAndStringsTest" name="testIsPalindromeNullYieldsFalse" time="0"/>
+  <testcase classname="com.bianchi.ch1.ArraysAndStringsTest" name="testIsPalindromeNormalWithMidpoint" time="0"/>
+  <testcase classname="com.bianchi.ch1.ArraysAndStringsTest" name="testIsOneEditAwayNullReturnsNull" time="0"/>
+  <testcase classname="com.bianchi.ch1.ArraysAndStringsTest" name="testConvertToURLSuccessCase" time="0"/>
+  <testcase classname="com.bianchi.ch1.ArraysAndStringsTest" name="testConvertToURLNullUrlReturnsNull" time="0"/>
+  <testcase classname="com.bianchi.ch1.ArraysAndStringsTest" name="testSubstring" time="0"/>
+  <testcase classname="com.bianchi.ch1.ArraysAndStringsTest" name="testCompressionTripleACaseThenDoubleB" time="0.001"/>
+  <testcase classname="com.bianchi.ch1.ArraysAndStringsTest" name="testIsPalindromeNormal" time="0"/>
+  <testcase classname="com.bianchi.ch1.ArraysAndStringsTest" name="testVoidOriginalReturnsFalse" time="0"/>
+  <testcase classname="com.bianchi.ch1.ArraysAndStringsTest" name="testIsOneEditAwayInputsOneNeedsInsertion" time="0"/>
+  <testcase classname="com.bianchi.ch1.ArraysAndStringsTest" name="testIsOneEditAwayInputsOneNeedsDeletion" time="0"/>
+  <testcase classname="com.bianchi.ch1.ArraysAndStringsTest" name="testIsPalindromeNormalCase" time="0"/>
+  <testcase classname="com.bianchi.ch1.ArraysAndStringsTest" name="testCompressionNullCase" time="0"/>
+  <testcase classname="com.bianchi.ch1.ArraysAndStringsTest" name="testCompressionTripleACase" time="0"/>
+  <testcase classname="com.bianchi.ch1.ArraysAndStringsTest" name="testVoidPotentialReturnsFalse" time="0"/>
+  <testcase classname="com.bianchi.ch1.ArraysAndStringsTest" name="testEmptyPotentialReturnsFalse" time="0.001"/>
+  <testcase classname="com.bianchi.ch1.ArraysAndStringsTest" name="testZeroMatrix" time="0.003"/>
+  <testcase classname="com.bianchi.ch1.ArraysAndStringsTest" name="testStringWithDuplicatesIsNotUnique" time="0"/>
 </testsuite>

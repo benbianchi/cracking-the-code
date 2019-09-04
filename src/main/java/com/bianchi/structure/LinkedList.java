@@ -1,7 +1,6 @@
 package com.bianchi.structure;
 
 import com.bianchi.structure.queue.LinkedDataStructure;
-import com.bianchi.structure.queue.LinkedDataStructure.Node;;
 
 /**
  * A custom written linked list class.
@@ -23,10 +22,17 @@ public class LinkedList<T extends Comparable<T>> extends LinkedDataStructure<T> 
      * @param payload
      */
     public void add(T payload) {
+        addNode(new Node<T>(payload));
+    }
+
+    /**
+     * Implemented to only expose the fact that we can intersect..
+     */
+    public void addNode(Node<T> node) {
         size++;
-        
+
         if (head  == null){
-            head = new Node<T>(payload);
+            head = node;
             return;
         }
         
@@ -36,7 +42,7 @@ public class LinkedList<T extends Comparable<T>> extends LinkedDataStructure<T> 
             tail = tail.next;
         }
 
-        tail.next = new Node(payload);
+        tail.next = node;
     }
 
 	public Node getNode(int indexWeAreSearchingFor) {
@@ -55,6 +61,7 @@ public class LinkedList<T extends Comparable<T>> extends LinkedDataStructure<T> 
 	}
 
 	public void delete(int indexWeAreDeleting) {
+        size--;
         if (indexWeAreDeleting == 0) {
             this.head = head.next;
             return;
