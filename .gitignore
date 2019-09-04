@@ -27,7 +27,7 @@
 hs_err_pid*
 
 ### IDEs ###
-*.vscode/
+*.*/
 ### Maven ###
 target/
 pom.xml.tag
