@@ -201,7 +201,7 @@ public class ArraysAndStringsTest {
         int[][] oldMatrix = new int[][] {{0,2,3},{4,5,6},{7,8,9}};
         int[][] newMatrix = new int[][] {{0,0,0},{0,5,6},{0,8,9}};
 
-        assertEquals(zeroOutMatrixRowAndColumn(oldMatrix), newMatrix);
+        assertArrayEquals(zeroOutMatrixRowAndColumn(oldMatrix), newMatrix);
     
     }
 

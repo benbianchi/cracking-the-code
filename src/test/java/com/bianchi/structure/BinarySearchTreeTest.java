@@ -75,5 +75,34 @@ public class BinarySearchTreeTest {
         Integer[] expectedArray = {0, 3, 5, 4 ,1};
         assertArrayEquals(asArray, expectedArray);
     }
+    
+    @Test
+    public void testCreateMinimalTree () {
+        Integer[] inputArray = { 1, 2, 3, 4, 5, 6, 7 };
 
+        BinarySearchTree<Integer> minimalTree = BinarySearchTree.createMinimalTree(inputArray);
+ 
+        assertEquals((int) minimalTree.root.value, 4);
+
+        assertEquals((int) minimalTree.root.left.value, 2);
+        assertEquals((int) minimalTree.root.left.left.value, 1);
+        assertEquals((int) minimalTree.root.left.right.value, 3);
+
+        assertEquals((int) minimalTree.root.right.value, 6);
+        assertEquals((int) minimalTree.root.right.right.value, 7);
+        assertEquals((int) minimalTree.root.right.left.value, 5);
+    }
+
+    @Test
+    public void testGetAllNodesAtDepth() {
+        assertEquals(BinarySearchTree.getNodesAtDepth(0, tree).get(0), (int) 1);
+
+        assertEquals(BinarySearchTree.getNodesAtDepth(1, tree).get(1), (int) 3);
+        assertEquals(BinarySearchTree.getNodesAtDepth(1, tree).get(0), (int) 0);
+        
+        assertEquals(BinarySearchTree.getNodesAtDepth(2, tree).get(0), (int) 5);
+        
+        assertEquals(BinarySearchTree.getNodesAtDepth(3, tree).get(0), (int) 4);
+    }
+    
 }
