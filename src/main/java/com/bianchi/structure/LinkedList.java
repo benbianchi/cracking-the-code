@@ -1,11 +1,13 @@
 package com.bianchi.structure;
 
+import java.util.Queue;
+
 import com.bianchi.structure.queue.LinkedDataStructure;
 
 /**
  * A custom written linked list class.
  */
-public class LinkedList<T extends Comparable<T>> extends LinkedDataStructure<T> {
+public class LinkedList<T extends Comparable<T>> extends LinkedDataStructure<T> implements Queue {
 
 
     public LinkedList(T head) {
